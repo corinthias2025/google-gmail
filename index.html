@@ -1,177 +1,93 @@
+
 <!DOCTYPE html>
-<html lang="pt-BR" >
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Google Drive - Currículo</title>
+  <title>Download via Google Drive</title>
   <style>
-    /* Reset */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f5f7fa;
-      color: #202124;
+      padding: 0;
+      background: #f2f3f5;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Header */
-    header {
-      height: 56px;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      padding: 0 24px;
-      border-bottom: 1px solid #e8eaed;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 1px 3px rgb(60 64 67 / 0.1);
-      user-select: none;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      font-weight: 600;
-      font-size: 22px;
-      color: #1967d2;
-      cursor: default;
-      letter-spacing: 0.02em;
-    }
-    .logo svg {
-      height: 28px;
-      width: 28px;
-      margin-right: 8px;
-    }
-
-    /* Main content */
-    main {
-      flex: 1;
-      max-width: 640px;
-      margin: 56px auto 64px;
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 10px 24px rgb(60 64 67 / 0.15);
-      padding: 48px 56px;
+    .container {
+      background: white;
+      border-radius: 12px;
+      padding: 40px 30px;
       text-align: center;
-      user-select: none;
-    }
-    main h1 {
-      font-weight: 600;
-      font-size: 32px;
-      margin-bottom: 18px;
-      color: #3c4043;
-      line-height: 1.15;
-      user-select: text;
-    }
-    main p.description {
-      font-size: 17px;
-      color: #5f6368;
-      margin-bottom: 40px;
-      letter-spacing: 0.01em;
-      user-select: text;
-    }
-
-    /* Link input */
-    input#link {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
       width: 100%;
-      font-size: 18px;
-      padding: 14px 20px;
-      border-radius: 8px;
-      border: 1.8px solid #dadce0;
-      color: #3c4043;
-      margin-bottom: 36px;
-      user-select: all;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      transition: border-color 0.3s ease;
-      cursor: text;
-    }
-    input#link:focus {
-      outline: none;
-      border-color: #1a73e8;
-      box-shadow: 0 0 8px rgba(26,115,232,0.45);
-    }
-
-    /* Copy button */
-    .btn-copy {
-      background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
-      border: none;
-      border-radius: 10px;
-      padding: 16px 0;
-      width: 100%;
-      font-weight: 700;
-      font-size: 17px;
-      color: white;
+      max-width: 420px;
       cursor: pointer;
-      box-shadow: 0 6px 14px rgb(26 115 232 / 0.4);
-      transition: background 0.25s ease, box-shadow 0.25s ease;
-      user-select: none;
-    }
-    .btn-copy:hover,
-    .btn-copy:focus {
-      background: linear-gradient(135deg, #155ab6 0%, #3367d6 100%);
-      box-shadow: 0 8px 20px rgb(21 90 182 / 0.6);
-      outline: none;
+      transition: box-shadow 0.3s ease;
+      position: relative;
     }
 
-    /* Copied message */
-    #copied {
-      font-weight: 600;
-      font-size: 15px;
-      color: #188038;
-      margin-top: 18px;
-      margin-bottom: 32px;
-      user-select: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      height: 20px;
-    }
-    #copied.visible {
-      opacity: 1;
-      height: auto;
+    .container:hover {
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
     }
 
-    /* Modal overlay */
-    #modalOverlay {
+    .container img {
+      width: 64px;
+      margin-bottom: 20px;
+    }
+
+    .container h1 {
+      font-size: 20px;
+      margin: 0 0 10px;
+      color: #202124;
+    }
+
+    .container p {
+      font-size: 14px;
+      color: #5f6368;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #34A853;
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      pointer-events: none;
+    }
+
+    /* Modal */
+    .modal {
       position: fixed;
-      inset: 0;
-      background: rgba(32,33,36,0.7);
-      backdrop-filter: blur(4px);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
       display: none;
       justify-content: center;
       align-items: center;
-      z-index: 1500;
-      padding: 16px;
+      z-index: 1000;
     }
 
-    /* Modal content */
-    #modalContent {
+    .modal-content {
       background: white;
-      max-width: 460px;
-      width: 100%;
-      border-radius: 14px;
-      padding: 36px 40px 28px;
-      box-shadow: 0 12px 32px rgb(60 64 67 / 0.25);
-      position: relative;
+      padding: 24px 30px;
+      border-radius: 12px;
       text-align: center;
-      font-size: 17px;
-      color: #3c4043;
-      line-height: 1.5;
-      user-select: text;
-      animation: slideFadeIn 0.4s ease forwards;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      max-width: 360px;
+      width: 90%;
+      animation: fadeInUp 0.3s ease;
     }
 
-    @keyframes slideFadeIn {
+    @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(-28px);
+        transform: translateY(30px);
       }
       to {
         opacity: 1;
@@ -179,150 +95,54 @@
       }
     }
 
-    /* Modal close button */
-    #modalClose {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      background: transparent;
-      border: none;
-      font-size: 28px;
-      line-height: 1;
-      cursor: pointer;
-      color: #5f6368;
-      transition: color 0.3s ease;
-      user-select: none;
-    }
-    #modalClose:hover,
-    #modalClose:focus {
-      color: #202124;
-      outline: none;
+    .modal-content h2 {
+      font-size: 18px;
+      margin: 0 0 12px;
+      color: #188038;
     }
 
-    /* Modal title */
-    #modalContent p.title {
-      font-weight: 700;
-      font-size: 22px;
-      margin-top: 0;
-      margin-bottom: 16px;
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-      main {
-        margin: 32px 16px 56px;
-        padding: 32px 24px;
-      }
-      main h1 {
-        font-size: 24px;
-      }
-      input#link {
-        font-size: 16px;
-        padding: 12px 14px;
-      }
-      .btn-copy {
-        font-size: 16px;
-        padding: 14px 0;
-      }
-      #modalContent {
-        padding: 28px 20px 24px;
-        font-size: 16px;
-      }
-      #modalContent p.title {
-        font-size: 20px;
-      }
+    .modal-content p {
+      font-size: 14px;
+      color: #3c4043;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo" title="Google Drive">
-    <!-- Google Drive Logo SVG -->
-    <svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" >
-      <path fill="#4285F4" d="M1.5 21h6l8.25-14h-6z"/>
-      <path fill="#34A853" d="M16.5 7h6l-3 5.25z"/>
-      <path fill="#FBBC05" d="M16.5 7h-9L1.5 21h6z"/>
-      <path fill="#EA4335" d="M13.5 14.25l-3-5.25-3 5.25z"/>
-    </svg>
-    Drive
-  </div>
-</header>
-
-<main>
-  <h1>📄O currículo está pronto para download</h1>
-  <p class="description">Clique no botão abaixo para copiar o link do Google Drive e siga as instruções que aparecerão.</p>
-
-  <input type="text" id="link" value="https://abrir.link/cQeQe" readonly aria-label="Link para baixar currículo" />
-
-  <button class="btn-copy" onclick="copyLink()" aria-label="Copiar link do currículo">
-    📋 Copiar link
-  </button>
-
-  <div id="copied" role="alert" aria-live="polite"></div>
-</main>
+<div class="container" onclick="copiarLink()">
+  <img src="https://www.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png" alt="Google Drive" />
+  <h1>Download via Google Drive</h1>
+  <p>Clique em qualquer lugar desta área para copiar o link do arquivo.</p>
+  <button class="btn">Copiar Link</button>
+</div>
 
 <!-- Modal -->
-<div id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
-  <div id="modalContent">
-    <button id="modalClose" aria-label="Fechar instruções">&times;</button>
-    <p id="modalTitle" class="title">✅ Link copiado!</p>
-    <p>Cole na barra de endereço do navegador usando <strong>Ctrl + V</strong> para baixar o arquivo.</p>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h2>✅ Link copiado!</h2>
+    <p>Cole na barra de endereço do navegador com <strong>Ctrl + V</strong> para baixar o arquivo.</p>
   </div>
 </div>
 
 <script>
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modalClose = document.getElementById('modalClose');
-  const copied = document.getElementById('copied');
+  function copiarLink() {
+    const link = "https://abrir.link/cQeQe"; // Altere aqui seu link
+    const tempInput = document.createElement("input");
+    document.body.appendChild(tempInput);
+    tempInput.value = link;
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
 
-  function copyLink() {
-    const input = document.getElementById('link');
-    input.select();
-    input.setSelectionRange(0, 99999);
+    // Mostra o modal
+    const modal = document.getElementById("modal");
+    modal.style.display = "flex";
 
-    try {
-      const successful = document.execCommand('copy');
-      if(successful) {
-        showCopiedMessage("✅ Link copiado com sucesso!");
-        openModal();
-      } else {
-        alert('Não foi possível copiar automaticamente. Por favor, copie manualmente.');
-      }
-    } catch (err) {
-      alert('Erro ao copiar. Por favor, copie manualmente.');
-    }
-  }
-
-  function showCopiedMessage(msg) {
-    copied.textContent = msg || "";
-    copied.classList.add('visible');
+    // Esconde depois de 3 segundos
     setTimeout(() => {
-      copied.classList.remove('visible');
+      modal.style.display = "none";
     }, 3000);
   }
-
-  function openModal() {
-    modalOverlay.style.display = 'flex';
-    modalOverlay.focus();
-    document.body.style.overflow = 'hidden'; // trava scroll fundo
-  }
-
-  function closeModal() {
-    modalOverlay.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-
-  modalClose.addEventListener('click', closeModal);
-  modalOverlay.addEventListener('click', e => {
-    if (e.target === modalOverlay) closeModal();
-  });
-
-  window.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && modalOverlay.style.display === 'flex') {
-      closeModal();
-    }
-  });
 </script>
 
 </body>
