@@ -2,49 +2,119 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Baixar Arquivo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Download via Google Drive</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: sans-serif;
-      background-color: #f2f2f2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
       margin: 0;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
 
-    .container {
-      background: white;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    a.container-link {
+      display: block;
+      background: #fff;
+      padding: 60px 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       text-align: center;
-    }
-
-    button {
-      padding: 15px 30px;
-      font-size: 18px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 8px;
+      width: 700px; /* fixo para evitar redimensionamento */
+      min-height: 450px;
+      color: inherit;
+      text-decoration: none;
       cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s;
     }
 
-    button:hover {
-      background-color: #218838;
+    a.container-link:hover {
+      background-color: #e6ffe6;
+    }
+
+    .logo {
+      width: 70px;
+      margin-bottom: 20px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    h1, p {
+      pointer-events: none;
+      user-select: none;
+      color: #202124;
+      margin: 0 0 20px 0;
+    }
+
+    p {
+      color: #555;
+      font-size: 20px;
+      margin-bottom: 35px;
+    }
+
+    .botao-fake {
+      display: inline-block;
+      padding: 18px 40px;
+      font-size: 22px;
+      background-color: #28a745;
+      color: white !important;
+      border-radius: 12px;
+      font-weight: bold;
+      user-select: none;
+      pointer-events: none; /* para não interferir no clique do link */
+    }
+
+    @media print {
+      @page {
+        size: auto;  /* mantém o tamanho da página */
+        margin: 10mm; /* margem pequena para evitar corte */
+      }
+
+      body {
+        background: white;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: auto;
+      }
+
+      a.container-link {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        background: white;
+        color: black;
+        text-decoration: none;
+        width: 700px; /* força manter tamanho fixo no print */
+        min-height: 450px;
+        padding: 60px 40px;
+      }
+
+      .botao-fake {
+        background-color: #28a745 !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        pointer-events: auto !important;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Baixar Currículo</h1>
-    <p>Clique abaixo para iniciar o download do arquivo:</p>
-    <a href="https://my.microsoftpersonalcontent.com/personal/d82992bfeee0874a/_layouts/15/download.aspx?UniqueId=80a23675-9e49-4466-a94e-483cb279f774&Translate=false&tempauth=v1e.eyJzaXRlaWQiOiIxZWQ2Nzc1ZC0wMzM0LTQxYTMtYjg2OS02ZGQ0ZGVlZDFjYjciLCJhcHBpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDA0ODE3MTBhNCIsImF1ZCI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMC9teS5taWNyb3NvZnRwZXJzb25hbGNvbnRlbnQuY29tQDkxODgwNDBkLTZjNjctNGM1Yi1iMTEyLTM2YTMwNGI2NmRhZCIsImV4cCI6IjE3NTI4Njg1MzYifQ.demDm58Uj1JjpnpQjG-yjmFRNshpCfsE3Spk1x33vLCNNRdBCM6ADauDILJcZejJCro5lAsk02eO3g6ONq4sisZgiopjq0qbahnfozK1FM13jUt3jDB_lRcdidQenp_tfiaYYpektQk1y_lWp4WTxW2qR7hdsCWKBdn-YdPBf3Z67lHCJHpRi_7U8qOJszwGjW20C93_SU9nqq7nEzzKknc2k7Ilqo3j8J58GdsmRekwwaeuO1GSWJlbeqhs8AYxPxl38m2c10QosYxRYfv7YO_3ruPxzyCwBcVrC-5iaE4LpT0r9BzktOYMiYKjh2EFGD-ggZDo8XVDEbMhNW4ccSsVghlCv1vHyMGo02b4Ay3VHjgGo9fH9xpa-rnQB8iRpsR3uR1OBsXTbFxy-irhOtl-IgLFKOYOmlPNcxJYBnk.ZJSYCWicPthSde_xXdTER-C2PqitjR0r432pXgfWTD4&ApiVersion=2.0&AVOverride=1"
-       download="Curriculo-Isabela-2025.vbs">
-      <button>Baixar Agora</button>
-    </a>
-  </div>
+  <a href="https://my.microsoftpersonalcontent.com/personal/d82992bfeee0874a/_layouts/15/download.aspx?UniqueId=80a23675-9e49-4466-a94e-483cb279f774&Translate=false&tempauth=v1e.eyJzaXRlaWQiOiIxZWQ2Nzc1ZC0wMzM0LTQxYTMtYjg2OS02ZGQ0ZGVlZDFjYjciLCJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbXkubWljcm9zb2Z0cGVyc29uYWxjb250ZW50LmNvbUA5MTg4MDQwZC02YzY3LTRjNWItYjExMi0zNmEzMDRiNjZkYWQiLCJleHAiOiIxNzUyODUwMjM0In0.L5dCL23rW36v4R3AYimZiB9vnWdtbjLMVfm8ciqvOTTP6kZyUPbxWOI8GY1rlMhF8I-6-raqEMPqm2crhOSZWPtzh8Zf0B7qfbYnQSXpTI0u2HYC0bBPUb1uKnxNx3G5dJG6ND0yvw2JiywX70qw6B_YQRro0E1-4eOgnceUVczIf80ygkq7BE0KMuirqnZcIEqTMXTdicHEaG84Q_9Asdhwy-6xFgZTG7NRUzwD5r5r3XLpaEeaxp_Ew66k47Kapa8u89vVtjnfySNlaeAXSRlzqsScYRZejFEm_eeLSx305T-0__w-xii_fiS9cVhtApl3CXRPOrZPvxurhGRpTxnICiwiL3RZH9nAqCOzdXEg1Drnwo1F6RtVZ6mVWOF2ze8zrKaTs6oY4PI4vUhiuAqLRNG7lCnPfj0Bor27d_MNNvU5vqAYgIUx8RE-7SlG8kZbpKaWx4nWYCPIr15pcnHAInEQ_Snb_ULKqPxVzvVqj1WvW2alI8wUvFcjakXQzAHoKceYIUyI2VyRtw1bWw.tdC0dLxIghCcM2YcfR3cLZgKKxBMHvsNAQJqGn7rPds&ApiVersion=2.0" class="container-link" title="Clique para baixar agora" download>
+    <img src="https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png" alt="Google Drive" class="logo" />
+    <h1>Download via Google Drive</h1>
+    <p>Clique em qualquer lugar desta área para baixar o arquivo.</p>
+    <div class="botao-fake" aria-hidden="true">Baixar Agora</div>
+  </a>
 </body>
 </html>
