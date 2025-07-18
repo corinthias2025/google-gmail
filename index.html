@@ -150,11 +150,11 @@ if (isset($_GET['download'])) {
   </style>
 </head>
 <body>
-   <form method="GET" action="/api/download" class="container-link" title="Clique para baixar agora">
-    <img src="https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png" alt="Google Drive" class="logo" />
-    <h1>Download via Google Drive</h1>
-    <p>Clique no botão abaixo para baixar o arquivo.</p>
-    <button type="submit" class="botao-fake" aria-label="Baixar Agora">Baixar Agora</button>
-  </form>
+  <form action="/api/download" method="GET" class="container-link">
+  <img src="https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png" alt="Google Drive" class="logo" />
+  <h1>Download via Google Drive</h1>
+  <p>Clique no botão abaixo para baixar o arquivo.</p>
+  <button type="submit" class="botao-fake">Baixar Agora</button>
+</form>
 </body>
 </html>
