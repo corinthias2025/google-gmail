@@ -1,11 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=https://ladingsitepage92821.wuaze.com/">
-  <title>Redirecionando...</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Download de Arquivo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    p {
+      margin-bottom: 30px;
+      color: #666;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
 </head>
 <body>
-  <p>Se não for redirecionado automaticamente, <a href="https://ladingsitepage92821.wuaze.com/">clique aqui</a>.</p>
+
+  <div class="container">
+    <h1>Download do Arquivo</h1>
+    <p>Clique no botão abaixo para iniciar o download.</p>
+    <form method="GET" action="/api/baixar">
+      <button type="submit">Baixar Agora</button>
+    </form>
+  </div>
+
 </body>
 </html>
