@@ -1,8 +1,8 @@
 {
   "functions": {
     "api/baixar.js": {
-      "memory": 512,
-      "maxDuration": 10
+      "memory": 128,
+      "maxDuration": 5
     }
   }
 }
