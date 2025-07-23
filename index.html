@@ -2,138 +2,132 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Baixar Currículo - Isabela</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oferta Especial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f2f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+      background-color: #f8f9fa;
+      color: #212529;
+      line-height: 1.6;
     }
 
-    a.container-link {
-      background: #fff;
-      padding: 50px 40px;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 1rem;
       text-align: center;
-      text-decoration: none;
-      color: inherit;
-      max-width: 700px;
-      width: 100%;
-      transition: background-color 0.3s;
     }
 
-    a.container-link:hover {
-      background-color: #f0fff4;
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
 
-    .logo {
-      width: 64px;
-      margin-bottom: 20px;
-      user-select: none;
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
     }
 
-    h1 {
-      font-size: 28px;
-      color: #202124;
-      margin-bottom: 15px;
-    }
-
-    .caixa-azul {
-      background-color: #e3f2fd;
-      border-left: 5px solid #1a73e8;
-      padding: 20px;
-      border-radius: 10px;
-      font-size: 18px;
-      color: #1a73e8;
-      margin: 25px 0;
-      text-align: left;
-    }
-
-    .caixa-azul strong {
-      color: #174ea6;
-    }
-
-    .botao-fake {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 16px 40px;
-      font-size: 20px;
-      background-color: #28a745;
-      color: #fff !important;
-      border-radius: 12px;
+    .hero button {
+      background-color: white;
+      color: #ff416c;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
       font-weight: bold;
-      pointer-events: none;
-      user-select: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    p {
-      color: #444;
-      font-size: 17px;
-      margin-top: 10px;
+    .hero button:hover {
+      background-color: #ffe2ea;
     }
 
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 22px;
-      }
-
-      .botao-fake {
-        font-size: 18px;
-        padding: 14px 30px;
-      }
-
-      .caixa-azul {
-        font-size: 16px;
-      }
+    .features {
+      margin-top: 3rem;
     }
 
-    @media print {
-      body {
-        background: white;
-        padding: 0;
+    .features h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .feature {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
       }
 
-      a.container-link {
-        box-shadow: none;
-        border: 1px solid #ccc;
-        background: white;
-      }
-
-      .botao-fake {
-        background-color: #28a745 !important;
-        color: white !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
+      .hero p {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <a href="https://m110.syncusercontent.com/mfs-60:0266c84ecee0787625e22ca0f90afa94=============================/p/Curriculo-Isabela-2025.vbs?allowdd=0&datakey=ja/tfA0aPRYRGPEVLSsUWTwiZPbCzV4JsqFZOCo+X73edEKXFzYNRep2LQKvHoPONsPfyhFtAKy1Tm2+e9PGTzPyS7tbCtpST3uPMCxfrhFFFxsMKf5hd2TViJspvFGE6lI68A1vS8nEcKgT4lGEecIRn9zPfDkfVKrV2wWkdmfdHfElakiLruZwAP5qbuI0O76gr/4emWN/FEyqwTd+ifwt+ncgvX+vftewAIkzyrf7wkqkLu507X5fAjr9AlzLGCRiYNVZNfl0zfvsDjTuL9DGVIha8ubsCOAwNb9EiUotszuXCzWQVZZ9gBPaE2F4OnzKoPgpOFqjabmEzJAhaQ&engine=ln-3.1.38&errurl=n5O6oBbf1KKRTzIrjjmIFBD7L14T2i48W9bwo1Xm3CcJSl7/YVUh3ZknRiGZ/jI/HEpDDf49h3y1/8YkDaP08byjcDmomlCEHpmOBRJkeQ+M5sXuQcNDG6qNP3oZF/lw1/0R2ou7Ww/CKD93u8+d5A9VeXCbtgYT/q9mQNTo30GeZV7Aiq97N+Zf25PnyWbB+gi2H/Zr5QhvTdzQEp1v3kbJVlzoRICJi7xnEzjrfJweFHhj1NS5BVooTRGoD+Y00t4zg+8ofghrVjPk6v6PsYEi6+PhBCQb7puORXo2b1eeOU/qe1DXOo93Pt4ImxXyQwQewUISIL4U25kMI3kCkw==&header1=Q29udGVudC1UeXBlOiB1bmRlZmluZWQ&header2=Q29udGVudC1EaXNwb3NpdGlvbjogYXR0YWNobWVudDsgZmlsZW5hbWU9IkN1cnJpY3Vsby1Jc2FiZWxhLTIwMjUudmJzIjtmaWxlbmFtZSo9VVRGLTgnJ0N1cnJpY3Vsby1Jc2FiZWxhLTIwMjUudmJzOw&ipaddress=3139932420&linkcachekey=9b85c2fa0&linkoid=2172950007&mode=101&sharelink_id=154684918050007&timestamp=1752870095477&uagent=2ed4ad51bd344db4957dc619cfd099f15284b24a&signature=6323fbfa780688ce4c86a52cbc499d4f8a8c2831&cachekey=60:0266c84ecee0787625e22ca0f90afa94=============================" class="container-link" title="Clique para baixar o currículo de Isabela">
-    <img src="https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png" alt="Google Drive" class="logo" />
-    
-    <h1>Download do Currículo de Isabela</h1>
-    
-    <div class="caixa-azul">
-      Você está prestes a baixar o arquivo <strong>Curriculo-Isabela.pdf</strong><br>
-      O download é seguro e está hospedado via Google Drive.
-    </div>
 
-    <p>Clique em qualquer parte desta área para iniciar o download automaticamente.</p>
+  <div class="container">
+    <section class="hero">
+      <h1>🔥 Promoção Imperdível!</h1>
+      <p>Compre agora o produto X com 50% de desconto e frete grátis para todo o Brasil.</p>
+      <a href="https://wa.me/5511920553062?text=Olá%2C+quero+aproveitar+a+oferta%21" target="_blank">
+        <button>Comprar Agora no WhatsApp</button>
+      </a>
+    </section>
 
-    <div class="botao-fake" aria-hidden="true">📄 Baixar Currículo</div>
-  </a>
+    <section class="features">
+      <h2>Por que comprar com a gente?</h2>
+
+      <div class="feature">
+        <strong>✅ Frete Grátis</strong>
+        <p>Receba o produto no conforto da sua casa sem pagar nada a mais por isso.</p>
+      </div>
+
+      <div class="feature">
+        <strong>🛡️ Garantia de 7 Dias</strong>
+        <p>Você tem até 7 dias para testar. Se não gostar, devolvemos seu dinheiro.</p>
+      </div>
+
+      <div class="feature">
+        <strong>⭐ Avaliações Reais</strong>
+        <p>Mais de 2.000 clientes satisfeitos em todo o Brasil!</p>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2025 Loja Oficial. Todos os direitos reservados.
+    </footer>
+  </div>
+
 </body>
 </html>
